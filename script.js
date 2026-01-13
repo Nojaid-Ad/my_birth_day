@@ -20,12 +20,12 @@ function resize() {
 resize();
 addEventListener("resize", resize);
 
-addEventListener("mousemove", e => {
+addEventListener("mousemove", (e) => {
   mouse.x = e.clientX;
   mouse.y = e.clientY;
 });
 
-addEventListener("touchmove", e => {
+addEventListener("touchmove", (e) => {
   mouse.x = e.touches[0].clientX;
   mouse.y = e.touches[0].clientY;
 });
@@ -64,8 +64,8 @@ function splash(x, y) {
 
 function animateSplash() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles = particles.filter(p => p.life > 0);
-  particles.forEach(p => {
+  particles = particles.filter((p) => p.life > 0);
+  particles.forEach((p) => {
     p.update();
     p.draw();
   });
@@ -122,11 +122,11 @@ class Dot {
   }
 }
 
-const dots = Array.from({ length: 280 }, () => new Dot());
+const dots = Array.from({ length: 350 }, () => new Dot());
 
 function animateBG() {
   bctx.clearRect(0, 0, bw, bh);
-  dots.forEach(d => {
+  dots.forEach((d) => {
     d.update();
     d.draw();
   });
@@ -161,17 +161,19 @@ gift.addEventListener("click", () => {
   }, 900);
 });
 
-card.addEventListener("click", e => {
+card.addEventListener("click", (e) => {
   if (e.target.closest("button")) return;
   card.classList.toggle("flip");
 });
 
-document.querySelectorAll("[data-share]").forEach(btn => {
-  btn.addEventListener("click", e => {
+document.querySelectorAll("[data-share]").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
     const url = location.href;
     const t = e.target.dataset.share;
     if (t === "copy") navigator.clipboard.writeText(url);
-    if (t === "whatsapp") window.open(`https://wa.me/?text=${encodeURIComponent(url)}`);
-    if (t === "telegram") window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}`);
+    if (t === "whatsapp")
+      window.open(`https://wa.me/?text=${encodeURIComponent(url)}`);
+    if (t === "telegram")
+      window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}`);
   });
 });
