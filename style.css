@@ -1,0 +1,194 @@
+:root {
+    --bg: #0f1117;
+    --card: #161a23;
+    --primary: #f5c77a;
+    --text: #eaeaea;
+    --muted: #9aa0b3;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1a1f2e, var(--bg));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    overflow: hidden;
+  }
+
+  canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+  
+
+  .gift-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .gift {
+    font-size: 8rem;
+    cursor: pointer;
+    filter: drop-shadow(0 0 35px rgba(245,199,122,.45));
+    transition: all .2s ease;
+  }
+  .gift:hover{
+    transform: scale(0.925);
+    opacity: 0.85;
+  }
+  @media (min-width: 1024px) {
+    .gift {
+      font-size: 12rem;
+    }
+  }
+  
+  .gift:active {
+    transform: scale(.95);
+  }
+  
+  .shake {
+    animation: shake .6s;
+  }
+  
+  @keyframes shake {
+    0% { transform: rotate(0); }
+    20% { transform: rotate(-12deg); }
+    40% { transform: rotate(12deg); }
+    60% { transform: rotate(-8deg); }
+    80% { transform: rotate(8deg); }
+    100% { transform: rotate(0); }
+  }
+  
+  .card-container {
+    width: 90%;
+    max-width: 420px;
+    height: 360px;
+    perspective: 1200px;
+    opacity: 0;
+    transform: scale(.85);
+    pointer-events: none;
+    transition: .6s ease;
+    z-index: 2;
+  }
+  
+  .card-container.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+  
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .8s cubic-bezier(.4,.2,.2,1);
+  }
+  
+  .card-container:active .card-inner,
+  .card-container.flip .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    background: linear-gradient(160deg, #1b2030, var(--card));
+    border-radius: 22px;
+    padding: 42px 36px;
+    text-align: center;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    box-shadow:
+      0 30px 80px rgba(0,0,0,.6),
+      inset 0 0 0 1px rgba(245,199,122,.15);
+  }
+  
+  .card-face > * {
+    margin: 6px 0;
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+  }
+  
+
+  h1 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 2rem;
+    letter-spacing: .5px;
+  }
+  
+  h2 {
+    font-weight: 600;
+  }
+  
+  .age,
+  .date {
+    color: var(--muted);
+  }
+  
+  .quote {
+    margin-top: 14px;
+    font-style: italic;
+    color: var(--text);
+  }
+  
+
+  button {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 10px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: .25s ease;
+  }
+  
+  button:hover {
+    background: var(--primary);
+    color: #000;
+  }
+  
+  .share {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+ 
+  @media (max-width: 480px) {
+    .gift {
+      font-size: 5.5rem;
+    }
+  
+    .card-container {
+      height: 340px;
+    }
+  
+    .card-face {
+      padding: 34px 24px;
+    }
+  }
+  
