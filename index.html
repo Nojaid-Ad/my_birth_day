@@ -79,14 +79,15 @@
 
     <script src="script.js"></script>
     <script>
-      fetch("https://api.countapi.xyz/hit/nojaid-ad.github.io/my_birth_day")
-        .then((response) => response.json())
+      fetch(
+        "https://api.countapi.xyz/hit/nojaid-ad.github.io/my_birth_day/visitors"
+      )
+        .then((res) => res.json())
         .then((data) => {
           document.getElementById("total-visitors").innerText = data.value;
         })
-        .catch((error) => {
+        .catch(() => {
           document.getElementById("total-visitors").innerText = "Error";
-          console.error(error);
         });
     </script>
   </body>
