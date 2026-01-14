@@ -79,16 +79,25 @@
 
     <script src="script.js"></script>
     <script>
-      fetch(
-        "https://api.countapi.xyz/hit/nojaid-ad.github.io/my_birth_day/visitors"
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          document.getElementById("total-visitors").innerText = data.value;
-        })
-        .catch(() => {
-          document.getElementById("total-visitors").innerText = "Error";
-        });
+      const counterURL =
+        "https://api.countapi.xyz/hit/nojaid-ad.github.io/my_birth_day/visitors";
+      const getURL =
+        "https://api.countapi.xyz/get/nojaid-ad.github.io/my_birth_day/visitors";
+
+      if (!sessionStorage.getItem("visited")) {
+        fetch(counterURL)
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("total-visitors").innerText = data.value;
+            sessionStorage.setItem("visited", "true");
+          });
+      } else {
+        fetch(getURL)
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("total-visitors").innerText = data.value;
+          });
+      }
     </script>
   </body>
 </html>
