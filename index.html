@@ -42,8 +42,13 @@
     <canvas id="bg"></canvas>
     <canvas id="splash"></canvas>
     <header>
-      <p>Total Visitors:</p>
-      <p id="total-visitors">Loading...</p>
+      <div class="visitor-badge-wrapper">
+        <img
+          
+          src="https://visitor-badge.laobi.icu/badge?page_id=Nojaid-Ad.my_birth_day&left_text=TOTAL%20VISITORS&left_color=1a81e2&right_color=1a81e2"
+          alt="Total Visitors"
+        />
+      </div>
     </header>
     <div class="gift-wrapper">
       <div class="gift" id="gift">🎁</div>
@@ -78,26 +83,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-      const counterURL =
-        "https://api.countapi.xyz/hit/nojaid-ad.github.io/my_birth_day/visitors";
-      const getURL =
-        "https://api.countapi.xyz/get/nojaid-ad.github.io/my_birth_day/visitors";
-
-      if (!sessionStorage.getItem("visited")) {
-        fetch(counterURL)
-          .then((res) => res.json())
-          .then((data) => {
-            document.getElementById("total-visitors").innerText = data.value;
-            sessionStorage.setItem("visited", "true");
-          });
-      } else {
-        fetch(getURL)
-          .then((res) => res.json())
-          .then((data) => {
-            document.getElementById("total-visitors").innerText = data.value;
-          });
-      }
-    </script>
   </body>
 </html>
