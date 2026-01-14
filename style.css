@@ -254,3 +254,15 @@ button:hover {
     padding: 34px 24px;
   }
 }
+header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#total-visitors {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #2c3e50;
+}
