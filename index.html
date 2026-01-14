@@ -41,7 +41,10 @@
     <audio id="audio" src="a.mp3" preload="auto"></audio>
     <canvas id="bg"></canvas>
     <canvas id="splash"></canvas>
-
+    <header>
+      <p>Total Visitors:</p>
+      <p id="total-visitors">Loading...</p>
+    </header>
     <div class="gift-wrapper">
       <div class="gift" id="gift">🎁</div>
     </div>
@@ -75,5 +78,16 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+      fetch("https://api.countapi.xyz/hit/nojaid-ad.github.io/my_birth_day")
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("total-visitors").innerText = data.value;
+        })
+        .catch((error) => {
+          document.getElementById("total-visitors").innerText = "Error";
+          console.error(error);
+        });
+    </script>
   </body>
 </html>
